@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\MaterialsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('courses/{id}', [CoursesController::class, 'updateCourses']);
     Route::delete('courses/{id}', [CoursesController::class, 'deleteCourses']);
     Route::post('courses/{id}/enroll', [CoursesController::class, 'enrollCourse']);
+
+    //Materials Routes
+    Route::post('materials', [MaterialsController::class, 'materials']);
+    Route::get('materials/{id}/download', [MaterialsController::class, 'downloadMaterial']);
 });
