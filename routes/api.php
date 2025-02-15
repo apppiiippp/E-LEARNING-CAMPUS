@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CoursesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    //Courses Routes
+    Route::get('courses', [CoursesController::class, 'index']);
+    Route::post('courses', [CoursesController::class, 'createCourses']);
+    Route::put('courses/{id}', [CoursesController::class, 'updateCourses']);
+    Route::delete('courses/{id}', [CoursesController::class, 'deleteCourses']);
+    Route::post('courses/{id}/enroll', [CoursesController::class, 'enrollCourse']);
+});
