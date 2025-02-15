@@ -39,7 +39,7 @@ class Courses extends Model
     // relasi one-to-many ke CoursesStudent model
     public function courses_students()
     {
-        return $this->hasMany(CourseStudent::class, 'courses_id');
+        return $this->hasMany(CoursesStudents::class, 'courses_id');
     }
 
     // relasi one-to-many ke User model

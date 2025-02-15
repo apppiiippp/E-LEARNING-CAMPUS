@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\ReportsController;
 use App\Http\Controllers\API\MaterialsController;
 use App\Http\Controllers\API\AssignmentsController;
 use App\Http\Controllers\API\DiscussionsController;
@@ -48,7 +49,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('submissions', [SubmissionsController::class, 'createdSubmissions']);
     Route::post('submissions/{id}/grade', [SubmissionsController::class, 'gradeSubmissions']);
 
-      //discussions routes
-      Route::post('discussions', [DiscussionsController::class, 'discussions']);
-      Route::post('discussions/{id}/replies', [DiscussionsController::class, 'replies']);
+    //discussions routes
+    Route::post('discussions', [DiscussionsController::class, 'discussions']);
+    Route::post('discussions/{id}/replies', [DiscussionsController::class, 'replies']);
+
+    // report routes
+    Route::get('reports/courses', [ReportsController::class, 'reportCourses']);
+    Route::get('reports/assignments', [ReportsController::class, 'reportsGraded']);
+    Route::get('reports/student/{id}', [ReportsController::class, 'reportStudent']);
 });
