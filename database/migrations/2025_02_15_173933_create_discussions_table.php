@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('discussions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role',['Mahasiswa', 'Dosen']);
-            $table->rememberToken();
+            $table->foreignId('courses_id')->nullable()->index('fk_discussions_to_courses');
+            $table->foreignId('user_id')->nullable()->index('fk_discussions_to_users');
+            $table->longText('content');
             $table->timestamps();
             $table->softDeletes();
+           
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('discussions');
     }
 };
