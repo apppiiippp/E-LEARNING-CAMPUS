@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\MaterialsController;
+use App\Http\Controllers\API\AssignmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //Materials Routes
     Route::post('materials', [MaterialsController::class, 'materials']);
     Route::get('materials/{id}/download', [MaterialsController::class, 'downloadMaterial']);
+
+    //Assignments Routes
+    Route::post('assignments', [AssignmentsController::class, 'createAssignment']);
 });

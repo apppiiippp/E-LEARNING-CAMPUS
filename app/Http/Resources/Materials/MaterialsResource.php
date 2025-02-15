@@ -20,6 +20,8 @@ class MaterialsResource extends JsonResource
             'courses_id' => $this->courses->name,
             'title' => $this->title,
             'file_path' => Storage::url($this->file_path),
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }
