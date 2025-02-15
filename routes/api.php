@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\MaterialsController;
 use App\Http\Controllers\API\AssignmentsController;
+use App\Http\Controllers\API\DiscussionsController;
 use App\Http\Controllers\API\SubmissionsController;
 
 /*
@@ -47,4 +48,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('submissions', [SubmissionsController::class, 'createdSubmissions']);
     Route::post('submissions/{id}/grade', [SubmissionsController::class, 'gradeSubmissions']);
 
+      //discussions routes
+      Route::post('discussions', [DiscussionsController::class, 'discussions']);
+      Route::post('discussions/{id}/replies', [DiscussionsController::class, 'replies']);
 });
