@@ -1,4 +1,4 @@
-# Sistem E-Learning Kampus
+# Sistem E-Learning Campus
 E-Learning Kampus adalah platform pembelajaran digital yang dirancang untuk memfasilitasi interaksi antara dosen dan mahasiswa dalam proses belajar mengajar. Sistem ini memungkinkan pengelolaan pembelajaran melalui fitur yang disediakan.
 
 
@@ -23,9 +23,8 @@ E-Learning Kampus adalah platform pembelajaran digital yang dirancang untuk memf
 - Statistik tugas dan nilai mahasiswa tertentu.
 
 ## Tech
-- Bahasa Pemrograman: PHP
-- Framework: Laravel 11
-- Frontend: Bootstrap 
+- Bahasa Pemrograman: PHP 8.2
+- Framework: Laravel 10
 - Database: MySQL
 
 ## Installation
