@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Submissions;
 use Illuminate\Http\Request;
+use App\Mail\GradeNotification;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Submissions\SubmissionsRequest;
 use App\Http\Resources\Submissions\SubmissionsResource;
 
@@ -44,7 +46,6 @@ class SubmissionsController extends Controller
                 'message' => 'Submission berhasil diupload',
                 'submission' => new SubmissionsResource($submission),
             ], 200);
-
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
@@ -80,9 +81,12 @@ class SubmissionsController extends Controller
         $submission->score = $request->score;
         $submission->save();
 
+
+        Mail::to('mahasiswa@gmail.com')->send(new GradeNotification($submission));
+
         return response()->json([
             'status' => true,
-            'message' => 'Submission berhasil diupdate',
+            'message' => 'Submission berhasil diupdate dengan nilai ' . $request->score,
             'data' => new SubmissionsResource($submission),
         ], 200);
     }

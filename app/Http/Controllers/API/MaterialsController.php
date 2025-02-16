@@ -44,6 +44,7 @@ class MaterialsController extends Controller
                 'message' => 'Material berhasil diupload',
                 'data' => new MaterialsResource($materials),
             ], 200);
+            
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
