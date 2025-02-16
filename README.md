@@ -26,17 +26,18 @@ E-Learning Kampus adalah platform pembelajaran digital yang dirancang untuk memf
 - Bahasa Pemrograman: PHP 8.2
 - Framework: Laravel 10
 - Database: MySQL
+- Software : Postman dan VisualStudicode
 
 ## Installation
 #### 1. Clone repository:
 
 ```sh
-git clone https://github.com/namauser/e-learn-kampus.git
+git clone https://github.com/apppiiippp/E-LEARNING-CAMPUS.git
 ```
 #### 2. Install dependencies:
 
 ```sh
-cd e-learn-kampus
+cd nama_folder
 composer install
 npm install
 ```
@@ -44,7 +45,7 @@ npm install
 #### 3. Konfigurasi .env dan migrasi database:
 
 ```sh
-php artisan migrate --seed
+php artisan migrate 
 ```
 
 #### 4. Jalankan Server: 
@@ -52,3 +53,12 @@ php artisan migrate --seed
 ```sh
 php artisan serve
 ```
+
+
+#### 5. Jalankan Websockets: 
+
+```sh
+php artisan websockets:serve
+```
+
+
