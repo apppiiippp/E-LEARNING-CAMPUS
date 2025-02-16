@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Replies;
 use App\Models\Discussions;
 use Illuminate\Http\Request;
+use App\Events\DiscussionEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Replies\RepliesResource;
@@ -29,6 +30,9 @@ class DiscussionsController extends Controller
             'user_id' => $user->id,
             'content' => $request->content,
         ]);
+
+         // 🚀 Panggil event broadcasting
+         broadcast(new DiscussionEvent($discussion))->toOthers();
 
         return response()->json([
             'status' => true,
